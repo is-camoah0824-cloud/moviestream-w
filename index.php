@@ -1,0 +1,74 @@
+<?php
+require_once 'config/session.php';
+require_once 'config/db.php';
+if (is_logged_in()) {
+    $r = current_role();
+    if ($r==='admin')    { header('Location: admin/dashboard.php');    exit; }
+    if ($r==='staff')    { header('Location: staff/dashboard.php');    exit; }
+    if ($r==='customer') { header('Location: customer/dashboard.php'); exit; }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieStream Platform - Stream Unlimited Movies</title>
+    <meta name="description" content="MovieStream Platform: Your ultimate destination for unlimited movies.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="home-page">
+<div class="hero-bg" style="background-image: url('assets/images/home.jpg');">
+    <div class="hero-overlay"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark position-relative" style="z-index:10;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.php">
+                <i class="fa-solid fa-clapperboard text-warning fs-3"></i>
+                <span class="brand-text">MovieStream<span class="text-warning">19</span></span>
+            </a>
+        </div>
+    </nav>
+    <div class="hero-content d-flex align-items-center justify-content-center text-center">
+        <div class="hero-inner">
+            <div class="badge-pill mb-3"><i class="fa-solid fa-film me-1"></i> Student Index 19</div>
+            <h1 class="hero-title">MovieStream<br><span class="text-gradient">Platform</span></h1>
+            <p class="hero-subtitle">Stream unlimited movies, manage your subscription, and discover cinema like never before &mdash; all in one place.</p>
+            <div class="hero-stats d-flex justify-content-center gap-4 mb-5">
+                <div class="stat-item"><span class="stat-num">6+</span><span class="stat-label">Movies</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">Plans</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat-item"><span class="stat-num">HD</span><span class="stat-label">Quality</span></div>
+            </div>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a href="login.php" class="btn btn-glow btn-lg px-5 py-3"><i class="fa-solid fa-right-to-bracket me-2"></i>Sign In</a>
+                <a href="register.php" class="btn btn-outline-light btn-lg px-5 py-3 btn-register"><i class="fa-solid fa-user-plus me-2"></i>Create Account</a>
+            </div>
+            <p class="mt-4 text-white-50 small"><i class="fa-solid fa-shield-halved me-1 text-warning"></i>Secure &middot; Role-Based Access &middot; Academic Project</p>
+        </div>
+    </div>
+    <div class="floating-cards d-none d-lg-flex">
+        <div class="float-card" style="animation-delay:0s"><i class="fa-solid fa-crown text-warning"></i><span>Admin Panel</span></div>
+        <div class="float-card" style="animation-delay:0.4s"><i class="fa-solid fa-users-gear text-info"></i><span>Staff Tools</span></div>
+        <div class="float-card" style="animation-delay:0.8s"><i class="fa-solid fa-play text-success"></i><span>Watch Now</span></div>
+    </div>
+</div>
+<section class="features-strip py-5">
+    <div class="container">
+        <div class="row g-4 text-center">
+            <div class="col-md-3"><div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-film"></i></div><h5>Rich Library</h5><p>Browse a curated catalogue of movies across multiple genres.</p></div></div>
+            <div class="col-md-3"><div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-star"></i></div><h5>Rate &amp; Review</h5><p>Rate films 1-5 stars and share your reviews with the community.</p></div></div>
+            <div class="col-md-3"><div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-id-badge"></i></div><h5>Role Access</h5><p>Admin, Staff, and Customer roles with tailored dashboards.</p></div></div>
+            <div class="col-md-3"><div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div><h5>Secure Sessions</h5><p>Prepared statements, session protection, and audit logging.</p></div></div>
+        </div>
+    </div>
+</section>
+<footer class="site-footer text-center py-4">
+    <p class="mb-0 text-white-50">&copy; <?= date('Y') ?> MovieStream Platform &mdash; Student Index 19 &mdash; Academic Project</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
